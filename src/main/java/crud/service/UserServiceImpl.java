@@ -1,5 +1,6 @@
 package crud.service;
 
+import com.github.javafaker.Faker;
 import crud.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +11,16 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    private final Faker faker = new Faker();
+
+    @Override
+    public User generateRandomUser() {
+
+        String name = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        return new User(name, lastName);
+    }
 
     @PersistenceContext
     private EntityManager entityManager;

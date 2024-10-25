@@ -18,6 +18,7 @@ public interface UserService {
 
     void deleteUser(long id);
 
+    User generateRandomUser();
 }
 
 

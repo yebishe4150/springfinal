@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/new")
     public String newUserForm(Model model) {
@@ -49,5 +53,13 @@ public class UserController {
         model.addAttribute("users", userService.getAllUsers());
         return "users";
     }
+
+    @GetMapping("/random")
+    public String generateRandomUser() {
+        User randomUser = userService.generateRandomUser();
+        userService.saveUser(randomUser);
+        return "redirect:/users";
+    }
+
 }
 
