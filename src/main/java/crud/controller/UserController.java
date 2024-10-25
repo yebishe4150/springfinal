@@ -14,12 +14,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public String listUsers(Model model) {
-        model.addAttribute("users", userService.getAllUsers());
-        return "users";
-    }
-
     @GetMapping("/new")
     public String newUserForm(Model model) {
         model.addAttribute("user", new User());
