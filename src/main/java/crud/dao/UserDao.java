@@ -8,7 +8,7 @@ public interface UserDao {
 
     void saveUser(User user);
 
-    User getById(int id);
+    User getById(long id);
 
     List<User> getAllUsers();
 
